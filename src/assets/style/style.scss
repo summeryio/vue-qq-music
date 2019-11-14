@@ -1,12 +1,6 @@
 @import './reset.scss';
+@import './_mixin.scss';
 
-$color: #31c27c;
-@mixin color() {
-    color: #31c27c;
-}
-@mixin bgColor() {
-    background-color: #31c27c;
-}
 
 .section-inner {
     max-width: 1200px;
@@ -23,6 +17,8 @@ $color: #31c27c;
     }
 }
 #m_header {
+    background-color: #fff;
+    border-bottom: 1px solid $highColor;
     .nav {
         li {
             float: left;
@@ -37,12 +33,13 @@ $color: #31c27c;
             font-size: 18px;
 
             &.router-link-exact-active {
-                background-color: $color;
+                @include bgColor();
                 color: #fff;
             }
         }
     }
     .search {
+        position: relative;
         margin-top: 26px;
 
         input::-webkit-input-placeholder {
@@ -60,7 +57,96 @@ $color: #31c27c;
             color: #666;
 
             &:hover {
-                @include color();
+                @include highColor();
+            }
+        }
+    }
+    .search-recommend {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 39px;
+        background-color: #fff;
+        border: 1px solid #DCDFE6;
+
+        .hot {
+            padding: 5px 0;
+
+            dd {
+                padding: 0 10px;
+                height: 36px;
+                line-height: 36px;
+                @include clearfix();
+                cursor: pointer;
+
+                &:hover {
+                    @include bgColor();
+
+                    i, span, em {
+                        color: #fff;
+                    }
+                }
+            }
+            i, span, em {
+                float: left;
+            }
+            i {
+                width: 18px;
+                color: #ff4222;
+            }
+            em {
+                float: right;
+                @include c_light();
+                font-size: 12px;
+            }
+            span {
+                @include t_hide(74%);
+            }
+        }
+        .history {
+            padding: 5px 0;
+
+            dt {
+                padding: 0 10px;
+                height: 36px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                span {
+                    @include c_light();
+                }
+                i {
+                    padding: 4px;
+                    font-size: 24px;
+                    cursor: pointer;
+                    @include c_mid();
+
+                    &:hover {
+                        @include highColor();
+                    }
+                }
+            }
+            dd {
+                padding: 0 10px;
+                display: flex;
+                height: 36px;
+                justify-content: space-between;
+                align-items: center;
+                line-height: 36px;
+                cursor: pointer;
+
+                &:hover {
+                    @include bgColor();
+
+                    i, span {
+                        color: #fff;
+                    }
+                }
+                i {
+                    padding: 4px;
+                    font-size: 20px;
+                }
             }
         }
     }

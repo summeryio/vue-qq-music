@@ -26,19 +26,21 @@
                             v-model="headerInput"
                         >
                         </el-input>
+                        <SearchRecommend></SearchRecommend>
                     </div>
                 </el-col>
             </el-row>
-            
         </div>
     </div>
 </template>
 
 <script>
 
+import SearchRecommend from './SearchRecomment'
 
 export default {
     components: {
+        SearchRecommend
     },
     data () {
         return {
