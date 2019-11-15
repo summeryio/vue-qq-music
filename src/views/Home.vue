@@ -6,7 +6,6 @@
 
 <script>
 import MHeader from '@/components/m-header/MHeader'
-import {getBanner} from '@/assets/js/api'
 
 export default {
     components: {
@@ -16,9 +15,7 @@ export default {
         }
     },
     mounted() {
-        getBanner().then((res) => {
-            console.log(res);
-        })
+        
     },
     methods: {},
 }

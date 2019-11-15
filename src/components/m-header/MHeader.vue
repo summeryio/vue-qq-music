@@ -24,9 +24,12 @@
                             placeholder="搜索音乐、MV、歌单、用户"
                             suffix-icon="el-icon-search"
                             v-model="headerInput"
+                            @focus="handleFocus(true)"
+                            @blur="handleFocus(false)"
                         >
                         </el-input>
-                        <SearchRecommend></SearchRecommend>
+                        <SearchHot v-show="show && showHot"></SearchHot>
+                        <SearchSuggest v-show="show && !showHot" :suggest="suggest" :keyWord="keyWord"></SearchSuggest>
                     </div>
                 </el-col>
             </el-row>
@@ -36,18 +39,54 @@
 
 <script>
 
-import SearchRecommend from './SearchRecomment'
+import SearchHot from './SearchHot'
+import SearchSuggest from './SearchSuggest'
+import {getBanner, getSearchSuggest} from '@/assets/js/api'
+import {myTrim} from '@/assets/js/util'
 
 export default {
     components: {
-        SearchRecommend
+        SearchHot,
+        SearchSuggest
     },
     data () {
         return {
+            headerInput: '',
+            show: false,
+            showHot: true,
+            suggest: {},
+            keyWord: ''
         }
     },
     mounted() {
     },
-    methods: {},
+    methods: {
+        handleFocus(bol) {
+            this.show = bol
+        },
+        _getSearchSuggest(val) {
+            getSearchSuggest(val).then(res => {
+                if (!Object.keys(res.result).length) {
+                    this.show = false
+                    
+                    return
+                } else {
+                    this.show = true
+                    this.suggest = res.result
+                }
+            })
+        }
+    },
+    watch: {
+        headerInput(newVal) {
+            if (newVal && myTrim(newVal) !== '') {
+                this.showHot = false
+                this.keyWord = newVal
+                this._getSearchSuggest(newVal)
+            } else {
+                this.showHot = true
+            }
+        }
+    }
 }
 </script>

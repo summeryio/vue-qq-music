@@ -16,7 +16,7 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
+/* #app {
 	font-family: 'Avenir', Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -35,5 +35,5 @@ export default {
 			color: #42b983;
 		}
 	}
-}
+} */
 </style>
