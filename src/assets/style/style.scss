@@ -8,7 +8,7 @@
 }
 
 
-// 顶部导航
+// ================ 顶部导航 ================
 #logo {
     margin-top: 22px;
     text-align: center;
@@ -199,5 +199,128 @@
                 @include c_light();
             }
         }
+    }
+}
+
+
+// ================ 首页 ================
+#home {
+    .section_inner {
+        overflow: hidden;
+    }
+    .types-title {
+        position: relative;
+        padding: 4% 0 2%;
+        font-size: 24px;
+        color: #93999F;
+        letter-spacing: 0.6px;
+        line-height: 36px;
+        text-align: center;
+    
+        em {
+            font-size: 26px;
+            font-weight: 600;
+            color: #4D555D;
+            margin: 0 3px
+        }
+        .tit-icon {
+            display: inline-block;
+            vertical-align: top;
+            width: 56px;
+            height: 36px;
+            background: url(../images/types_title.png) no-repeat;
+            background-size: 100%
+        }
+        .tit-icon-l {
+            margin-right: 24px
+        }
+        .tit-icon-r {
+            margin-left: 24px
+        }
+        span.icon-star-l {
+            background-position: center -504px
+        }
+        span.icon-star-r {
+            background-position: center -540px
+        }
+        span.icon-new-l {
+            background-position: center -72px
+        }
+        span.icon-new-r {
+            background-position: center -108px
+        }
+        span.icon-new-r {
+            background-position: center -108px
+        }
+        span.icon-art-l {
+            background-position: center -360px
+        }
+        span.icon-art-r {
+            background-position: center -396px
+        }
+        span.icon-skill-l {
+            background-position: center -216px
+        }
+        span.icon-skill-r {
+            background-position: center -252px
+        }
+        span.icon-shizhan-l {
+            background-position: center 0
+        }
+        span.icon-shizhan-r {
+            background-position: center -36px
+        }
+    }
+    .card {
+        position: relative;
+        height: 500px;
+        background: url(https://y.gtimg.cn/mediastyle/yqq/img/bg_detail.jpg) 50% 0 repeat-x;
+    }
+    .index-tab {
+        height: 50px;
+        text-align: center;
+        li {
+            display: inline-block;
+            font-size: 15px;
+            margin: 0 24px;
+
+            &.active {
+                @include highColor();
+            }
+        }
+    }
+
+    .swiper-container {
+        height: 200px;
+        background-color: #fff;
+    }
+    .playlist-box {
+        font-size: 0;
+        li {
+            display: inline-block;
+            width: 20%;
+        }
+        .wrapper {
+            display: block;
+            margin-right: 20px;
+        }
+        .pic {
+            position: relative;
+            margin-bottom: 15px;
+            padding-top: 100%;
+
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                
+                transform: scale(1) translateZ(0);
+                transition: transform .75s;
+            }
+        }
+        .intro {}
     }
 }

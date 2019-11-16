@@ -11,8 +11,10 @@ h1,h2,h3,h4,h5,h6 {
     -webkit-appearance: button
 } */
 img {
-    height: auto;
-    max-width: 100%
+    max-width: 100%;
+    border: 0 none;
+    -ms-interpolation-mode: bicubic;
+    image-rendering: optimizeQuality;
 }
 img[lazy=loading] {
     background-color: #f6f7f9;

@@ -6,6 +6,7 @@ import store from './store'
 import 'babel-polyfill'
 import VueLazyload from 'vue-lazyload'
 
+// element-ui
 import 'element-ui/lib/theme-chalk/base.css';
 import { Button, Select, Message, Row, Col, Input, Loading, MessageBox } from 'element-ui';
 import CollapseTransition from 'element-ui/lib/transitions/collapse-transition';
@@ -26,6 +27,11 @@ Vue.prototype.$prompt = MessageBox.prompt;
 Vue.prototype.$notify = Notification;
 Vue.prototype.$message = Message;
 import '@/assets/style/element-variables.scss'
+
+// swiper
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+Vue.use(VueAwesomeSwiper)
+import 'swiper/dist/css/swiper.css'
 
 import '@/assets/style/style.scss'
 
