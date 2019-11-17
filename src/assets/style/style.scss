@@ -65,6 +65,7 @@
     .search-hot,
     .search-result {
         position: absolute;
+        z-index: 999;
         left: 0;
         right: 0;
         top: 40px;
@@ -273,7 +274,7 @@
     }
     .card {
         position: relative;
-        height: 500px;
+        height: 600px;
         background: url(https://y.gtimg.cn/mediastyle/yqq/img/bg_detail.jpg) 50% 0 repeat-x;
     }
     .index-tab {
@@ -291,23 +292,40 @@
     }
 
     .swiper-container {
-        height: 200px;
-        background-color: #fff;
+        margin-bottom: 20px;
     }
     .playlist-box {
+        margin-right: -20px;
         font-size: 0;
         li {
+            position: relative;
             display: inline-block;
             width: 20%;
+            font-size: 14px;
+
+            &::before {
+                content: "";
+                display: block;
+                width: 100%;
+                padding-top: 100%;
+                padding-bottom: 66px;
+            }
         }
         .wrapper {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            
             display: block;
             margin-right: 20px;
         }
         .pic {
             position: relative;
-            margin-bottom: 15px;
+            display: block;
+            overflow: hidden;
             padding-top: 100%;
+            margin-bottom: 15px;
 
             img {
                 position: absolute;
@@ -320,7 +338,17 @@
                 transform: scale(1) translateZ(0);
                 transition: transform .75s;
             }
+            .mask {
+                position: absolute;
+            }
+            .icon-play {
+                position: absolute;
+            }
         }
-        .intro {}
+        .intro {
+            .count {
+                @include c_light();
+            }
+        }
     }
 }

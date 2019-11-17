@@ -18,7 +18,7 @@
                         <li>
                             <a href="/" class="wrapper">
                                 <div class="pic">
-                                    <img src="//qpic.y.qq.com/music_cover/ibntviciboJuwCoCNK8ibZkjep7ibAibmOb7FEdoTiarWEIIrkSTulAVACEuA/300?n=1" onerror="this.src='//y.gtimg.cn/mediastyle/global/img/playlist_300.png?max_age=31536000';this.onerror=null;" alt="谢谢你们，NICO Touches the Walls">
+                                    <img src="//qpic.y.qq.com/music_cover/z5D0wytPKWngLmpCOFgNJmUDq2TMjE4sFkkKd9Kjh5otYmu8gqOq5Q/300?n=1" onerror="this.src='//y.gtimg.cn/mediastyle/global/img/playlist_300.png?max_age=31536000';this.onerror=null;" alt="谢谢你们，NICO Touches the Walls">
                                     <i class="mask"></i>
                                     <i class="iconfont icon-play"></i>
                                 </div>
