@@ -4,32 +4,28 @@
             <h3 class="types-title">
                 <span class="tit-icon icon-star-l tit-icon-l"></span><em>歌</em>／<em>单</em>／<em>推</em>／<em>荐</em><span class="tit-icon icon-star-r tit-icon-r"></span>
             </h3>
-            <ul class="index-tab">
-                <li v-for="(tag, i) in tags" :class="{active: i === curTag}" @click="getPlaylist(tag.name, i)">{{tag.name}}</li>
-            </ul>
-            <div class="mod_swiper_container">
-                <!-- v-if 解决数据加载效果不对的问题 -->
-                <swiper :options="swiperOption"  ref="mySwiper">
-                    <swiperSlide v-for="(slide, i) in playlists" :key="i">
-                        <ul class="mod_playlist_box">
-                            <li v-for="item in slide" :key="item.id">
-                                <div class="wrapper">
-                                    <a href="/" class="pic mod_cover">
-                                        <img v-lazy="item.coverImgUrl + '?param=300y300'" onerror="this.src='//y.gtimg.cn/mediastyle/global/img/playlist_300.png?max_age=31536000';this.onerror=null;" alt="谢谢你们，NICO Touches the Walls">
-                                        <i class="mask mod_mask"></i>
-                                        <i class="play mod_icon_play"></i>
-                                    </a>
-                                    <div class="intro">
-                                        <a href="/" class="name">{{item.name}}</a>
-                                        <p class="count">播放量：{{formatCount(item.playCount)}}</p>
-                                    </div>
+            
+
+            <Slider :tags="tags" @select="changeTag">
+                <swiperSlide v-for="(slide, i) in playlists" :key="i">
+                    <ul class="mod_playlist_box">
+                        <li v-for="item in slide" :key="item.id">
+                            <div class="wrapper">
+                                <a href="/" class="pic mod_cover">
+                                    <img v-lazy="item.coverImgUrl + '?param=300y300'" onerror="this.src='//y.gtimg.cn/mediastyle/global/img/playlist_300.png?max_age=31536000';this.onerror=null;" alt="谢谢你们，NICO Touches the Walls">
+                                    <i class="mask mod_mask"></i>
+                                    <i class="play mod_icon_play"></i>
+                                </a>
+                                <div class="intro">
+                                    <a href="/" class="name">{{item.name}}</a>
+                                    <p class="count">播放量：{{formatCount(item.playCount)}}</p>
                                 </div>
-                            </li>
-                        </ul>
-                    </swiperSlide>
-                </swiper>
-                <div class="swiper-pagination mod_swiper_pagination"  slot="pagination"></div>
-            </div>
+                            </div>
+                        </li>
+                    </ul>
+                </swiperSlide>
+            </Slider>
+
         </div>
         <div class="mod_swiper_action">
             <div class="item left">
@@ -46,37 +42,16 @@
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import {getHomePlaylist, getHomePlaylistTag} from '@/assets/js/api'
 import {spliceArray, formatCount} from '@/assets/js/util'
+import Slider from './Slider'
 
 export default {
     components: {
         swiper,
-        swiperSlide
+        swiperSlide,
+        Slider
     },
     data () {
         return {
-            swiperOption:{
-                slidesPerView: 'auto',
-                centeredSlides:true,
-                spaceBetween: 0,
-                loop:false,
-                speed:600,
-                navigation: {
-                    nextEl: '.swiper_action-next',
-                    prevEl: '.swiper_action-prev',
-                },
-                pagination: {
-                    el: '.mod_swiper_pagination',
-                    clickable: true,
-                    bulletClass: 'bullet',
-                    bulletActiveClass: 'bullet-active',
-                    renderBullet: function (index, className) {
-                        return '<span class="'+className+'"><i></i></span>';
-                    },
-                },
-                //修改swiper自己或子元素时，自动初始化swiper
-                observer:true,
-                observeParents:true,
-            },
             playlists: [],
             tags: [],
             curTag: 0
@@ -96,17 +71,20 @@ export default {
 
             getHomePlaylist(tag).then(res => {
                 this.playlists = spliceArray(res.playlists, 5)
-                this.swiper.slideTo(0, false) // 切换tag后，跳到第一个slide
+                // this.swiper.slideTo(0, false) // 切换tag后，跳到第一个slide
             })
         },
         formatCount(count) {
             return formatCount(count)
+        },
+        changeTag(tag, index) { // 切换tag
+            this.getPlaylist(tag, index)
         }
     },
     computed: {
-        swiper() {
+        /* swiper() {
             return this.$refs.mySwiper.swiper
-        }
+        } */
     }
 }
 </script>
