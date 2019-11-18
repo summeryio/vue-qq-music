@@ -37,7 +37,8 @@ import '@/assets/style/style.scss'
 
 
 Vue.use(VueLazyload, {
-  loading: require('@/assets/images/default.svg')
+  // loading: require('@/assets/images/default.svg')
+  loading: require('@/assets/images/1.png')
 })
 
 Vue.config.productionTip = false

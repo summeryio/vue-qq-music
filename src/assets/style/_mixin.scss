@@ -25,3 +25,10 @@ $highColor: #31c27c;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+@mixin ab_full() {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
