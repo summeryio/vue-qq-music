@@ -1,37 +1,27 @@
 <template>
     <div class="card card-recommend mod_slider_box">
-        <div class="section-inner">
-            <h3 class="types-title">
-                <span class="tit-icon icon-star-l tit-icon-l"></span><em>歌</em>／<em>单</em>／<em>推</em>／<em>荐</em><span class="tit-icon icon-star-r tit-icon-r"></span>
-            </h3>
-            <Slider :tags="tags" @select="changeTag">
-                <swiperSlide v-for="(slide, i) in playlists" :key="i">
-                    <ul class="mod_playlist_box">
-                        <li v-for="item in slide" :key="item.id">
-                            <div class="wrapper">
-                                <a href="/" class="pic mod_cover">
-                                    <img v-lazy="item.coverImgUrl + '?param=300y300'" onerror="this.src='//y.gtimg.cn/mediastyle/global/img/playlist_300.png?max_age=31536000';this.onerror=null;" alt="谢谢你们，NICO Touches the Walls">
-                                    <i class="mask mod_mask"></i>
-                                    <i class="play mod_icon_play"></i>
-                                </a>
-                                <div class="intro">
-                                    <a href="/" class="name">{{item.name}}</a>
-                                    <p class="count">播放量：{{formatCount(item.playCount)}}</p>
-                                </div>
+        <h3 class="types-title">
+            <span class="tit-icon icon-star-l tit-icon-l"></span><em>歌</em>／<em>单</em>／<em>推</em>／<em>荐</em><span class="tit-icon icon-star-r tit-icon-r"></span>
+        </h3>
+        <Slider :tags="tags" @select="changeTag" :mark="mark">
+            <swiperSlide v-for="(slide, i) in playlists" :key="i">
+                <ul class="mod_playlist_box">
+                    <li v-for="item in slide" :key="item.id">
+                        <div class="wrapper">
+                            <a href="/" class="pic mod_cover">
+                                <img v-lazy="item.coverImgUrl + '?param=300y300'" onerror="this.src='//y.gtimg.cn/mediastyle/global/img/playlist_300.png?max_age=31536000';this.onerror=null;" alt="谢谢你们，NICO Touches the Walls">
+                                <i class="mask mod_mask"></i>
+                                <i class="play mod_icon_play"></i>
+                            </a>
+                            <div class="intro">
+                                <a href="/" class="name">{{item.name}}</a>
+                                <p class="count">播放量：{{formatCount(item.playCount)}}</p>
                             </div>
-                        </li>
-                    </ul>
-                </swiperSlide>
-            </Slider>
-        </div>
-        <div class="mod_swiper_action">
-            <div class="item left">
-                <a href="javascript: void(0);" class="swiper_action-prev"><i></i></a>
-            </div>
-            <div class="item right">
-                <a href="javascript: void(0);" class="swiper_action-next"><i></i></a>
-            </div>
-        </div>
+                        </div>
+                    </li>
+                </ul>
+            </swiperSlide>
+        </Slider>
     </div>
 </template>
 
@@ -50,7 +40,8 @@ export default {
     data () {
         return {
             playlists: [],
-            tags: []
+            tags: [],
+            mark: 'recommend'
         }
     },
     mounted() {

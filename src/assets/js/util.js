@@ -27,7 +27,7 @@ export function spliceArray(arr, n) {
     return res
 }
 
-
+// 得到范围随机数
 export function getRandomNum(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
 }

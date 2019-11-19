@@ -265,6 +265,16 @@
         .count {
             @include c_light();
         }
+        .singer {
+            @include c_light();
+            a {
+                @include c_light();
+
+                &:hover {
+                    @include highColor();
+                }
+            }
+        }
     }
 }
 .mod_mask {

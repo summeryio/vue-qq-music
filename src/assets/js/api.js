@@ -18,3 +18,4 @@ export const getSearchSuggest = (val) => get(`/search/suggest?keywords=${val}`)
 } */
 export const getHomePlaylist = (tag) => get(`/top/playlist?limit=${15}&cat=${tag}`)
 export const getHomePlaylistTag = () => get('/playlist/hot')
+export const getHomeAlbum = () => get('/album/newest')

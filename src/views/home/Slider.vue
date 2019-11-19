@@ -1,20 +1,29 @@
 <template>
     <div>
-        <ul class="index-tab" v-if="tags.length > 0">
-            <li 
-                v-for="(tag, i) in tags" 
-                :class="{active: i === curTag}" 
-                @click="changeTag(tag.name, i)"
-                :key="i"
-            >{{tag.name}}</li>
-        </ul>
+        <div class="section-inner">
+            <ul class="index-tab" v-if="tags.length > 0">
+                <li 
+                    v-for="(tag, i) in tags" 
+                    :class="{active: i === curTag}" 
+                    @click="changeTag(tag.name, i)"
+                    :key="i"
+                >{{tag.name}}</li>
+            </ul>
 
-        <div class="mod_swiper_container">
-            <!-- v-if 解决数据加载效果不对的问题 -->
-            <swiper :options="swiperOption"  ref="mySwiper">
-                <slot></slot>
-            </swiper>
-            <div class="swiper-pagination mod_swiper_pagination"  slot="pagination"></div>
+            <div class="mod_swiper_container">
+                <swiper :options="swiperOption"  ref="mySwiper">
+                    <slot></slot>
+                </swiper>
+                <div class="swiper-pagination mod_swiper_pagination" :class="mark + '_pagination'"  slot="pagination"></div>
+            </div>
+        </div>
+        <div class="mod_swiper_action">
+            <div class="item left">
+                <a href="javascript: void(0);" class="swiper_action-prev" :class="mark + '_active_prev'"><i></i></a>
+            </div>
+            <div class="item right">
+                <a href="javascript: void(0);" class="swiper_action-next" :class="mark + '_active_next'"><i></i></a>
+            </div>
         </div>
     </div>
 </template>
@@ -31,6 +40,10 @@ export default {
         tags: {
             type: Array,
             default: []
+        },
+        mark: {
+            type: String,
+            default: ''
         }
     },
     data() {
@@ -42,11 +55,11 @@ export default {
                 loop:false,
                 speed:600,
                 navigation: {
-                    nextEl: '.swiper_action-next',
-                    prevEl: '.swiper_action-prev',
+                    prevEl: `.${this.mark}_active_prev`,
+                    nextEl: `.${this.mark}_active_next`
                 },
                 pagination: {
-                    el: '.mod_swiper_pagination',
+                    el: `.${this.mark}_pagination`,
                     clickable: true,
                     bulletClass: 'bullet',
                     bulletActiveClass: 'bullet-active',
