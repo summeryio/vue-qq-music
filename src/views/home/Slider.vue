@@ -65,6 +65,12 @@ export default {
         changeTag(tag, index) {
             this.curTag = index
             this.$emit('select', tag, index)
+            this.swiper.slideTo(0, false)
+        }
+    },
+    computed: {
+        swiper() {
+            return this.$refs.mySwiper.swiper
         }
     }
 }

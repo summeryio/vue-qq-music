@@ -4,8 +4,6 @@
             <h3 class="types-title">
                 <span class="tit-icon icon-star-l tit-icon-l"></span><em>歌</em>／<em>单</em>／<em>推</em>／<em>荐</em><span class="tit-icon icon-star-r tit-icon-r"></span>
             </h3>
-            
-
             <Slider :tags="tags" @select="changeTag">
                 <swiperSlide v-for="(slide, i) in playlists" :key="i">
                     <ul class="mod_playlist_box">
@@ -25,7 +23,6 @@
                     </ul>
                 </swiperSlide>
             </Slider>
-
         </div>
         <div class="mod_swiper_action">
             <div class="item left">
@@ -53,8 +50,7 @@ export default {
     data () {
         return {
             playlists: [],
-            tags: [],
-            curTag: 0
+            tags: []
         }
     },
     mounted() {
@@ -66,12 +62,9 @@ export default {
         this.getPlaylist('全部', 0)
     },
     methods: {
-        getPlaylist(tag, index) {
-            this.curTag = index
-
+        getPlaylist(tag, index, swiper) {
             getHomePlaylist(tag).then(res => {
                 this.playlists = spliceArray(res.playlists, 5)
-                // this.swiper.slideTo(0, false) // 切换tag后，跳到第一个slide
             })
         },
         formatCount(count) {
@@ -80,11 +73,6 @@ export default {
         changeTag(tag, index) { // 切换tag
             this.getPlaylist(tag, index)
         }
-    },
-    computed: {
-        /* swiper() {
-            return this.$refs.mySwiper.swiper
-        } */
     }
 }
 </script>

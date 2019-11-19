@@ -9,7 +9,11 @@ export function myTrim(str) {
     return str.replace(/^\s+|\s+$/gm,'');
 }
 
-// 将数组按参数分割
+/**
+ * 将数组按参数分割
+ * @param {arr} 要分割的数组
+ * @param {n} 每个数组分割的个数
+ */
 export function spliceArray(arr, n) {
     let res = []
     let page = Math.ceil(arr.length / n)
@@ -21,4 +25,9 @@ export function spliceArray(arr, n) {
     }
 
     return res
+}
+
+
+export function getRandomNum(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min)
 }
