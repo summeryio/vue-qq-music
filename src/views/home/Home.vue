@@ -1,22 +1,28 @@
 <template>
     <div class="qq_music" id="home">
-        <Recommend></Recommend>
+        <Playlist></Playlist>
         <NewSong></NewSong>
+        <Banner></Banner>
         <Album></Album>
+        <MV></MV>
     </div>
 </template>
 
 <script>
 import MHeader from '@/components/m-header/MHeader'
-import Recommend from './Recommend'
+import Playlist from './Playlist'
 import Album from './Album'
 import NewSong from './NewSong'
+import Banner from './Banner'
+import MV from './MV'
 
 export default {
     components: {
-        Recommend,
+        Playlist,
         Album,
-        NewSong
+        NewSong,
+        Banner,
+        MV
     },
     data () {
         return {

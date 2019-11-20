@@ -37,8 +37,8 @@ import '@/assets/style/style.scss'
 
 
 Vue.use(VueLazyload, {
-  // loading: require('@/assets/images/default.svg')
-  loading: require('@/assets/images/1.png')
+  loading: require('@/assets/images/1.png'),
+  error: 'http://y.gtimg.cn/mediastyle/global/img/playlist_300.png?max_age=31536000',
 })
 
 Vue.config.productionTip = false

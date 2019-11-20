@@ -185,10 +185,6 @@
             .album {
                 @include c_mid();
             }
-            .singer {
-
-                @include c_light();
-            }
         }
     }
 }
@@ -245,12 +241,6 @@
             transform: scale(1) translateZ(0);
             transition: transform .75s;
         }
-        .mask {
-            
-        }
-        .play {
-            
-        }
     }
     .intro {
         .name {
@@ -264,16 +254,6 @@
         }
         .count {
             @include c_light();
-        }
-        .singer {
-            @include c_light();
-            a {
-                @include c_light();
-
-                &:hover {
-                    @include highColor();
-                }
-            }
         }
     }
 }
@@ -412,5 +392,18 @@
     }
     .bullet-active i {
         background-color: rgba(0,0,0,.3);
+    }
+}
+
+
+// ================ 列表中显示的歌手名 ================
+.mod_singer_name {
+    @include c_light();
+    a {
+        @include c_light();
+
+        &:hover {
+            @include highColor();
+        }
     }
 }

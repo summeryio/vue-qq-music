@@ -1,20 +1,21 @@
 <template>
-    <div class="card card-recommend mod_slider_box">
+    <div class="card card-mv mod_slider_box">
         <h3 class="types-title">
-            <span class="tit-icon icon-star-l tit-icon-l"></span><em>歌</em>／<em>单</em>／<em>推</em>／<em>荐</em><span class="tit-icon icon-star-r tit-icon-r"></span>
+            <span class="tit-icon icon-star-l tit-icon-l"></span><em>最</em>／<em>新</em>／<em>M</em>／<em>V</em><span class="tit-icon icon-star-r tit-icon-r"></span>
         </h3>
         <Slider :tags="tags" @select="changeTag" :mark="mark">
-            <swiperSlide v-for="(slide, i) in playlists" :key="i">
-                <ul class="mod_playlist_box">
+            <swiperSlide v-for="(slide, i) in mvs" :key="i">
+                <ul class="mv-list">
                     <li v-for="item in slide" :key="item.id">
                         <div class="wrapper">
                             <a href="/" class="pic mod_cover">
-                                <img v-lazy="item.coverImgUrl + '?param=300y300'" onerror="this.src='//y.gtimg.cn/mediastyle/global/img/playlist_300.png?max_age=31536000';this.onerror=null;" alt="谢谢你们，NICO Touches the Walls">
+                                <img v-lazy="item.cover + '?param=300y300'">
                                 <i class="mask mod_mask"></i>
                                 <i class="play mod_icon_play"></i>
                             </a>
                             <div class="intro">
                                 <a href="/" class="name">{{item.name}}</a>
+                                <SingerName :artists="item.artists"></SingerName>
                                 <p class="count">播放量：{{formatCount(item.playCount)}}</p>
                             </div>
                         </div>
@@ -27,34 +28,35 @@
 
 <script>
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
-import {getHomePlaylist, getHomePlaylistTag} from '@/assets/js/api'
+import {getHomeMV} from '@/assets/js/api'
 import {spliceArray, formatCount} from '@/assets/js/util'
+import SingerName from '@/components/SingerName'
 import Slider from './Slider'
 
 const TAGS = [
     {
-        id: '全部',
+        id: '',
         name: '全部'
     },
     {
-        id: '华语',
-        name: '华语'
+        id: '内地',
+        name: '内地'
     },
     {
-        id: '流行',
-        name: '流行'
+        id: '港台',
+        name: '港台'
     },
     {
-        id: '摇滚',
-        name: '摇滚'
+        id: '欧美',
+        name: '欧美'
     },
     {
-        id: '民谣',
-        name: '民谣'
+        id: '日本',
+        name: '日本'
     },
     {
-        id: '电子',
-        name: '电子'
+        id: '韩国',
+        name: '韩国'
     }
 ]
 
@@ -62,27 +64,24 @@ export default {
     components: {
         swiper,
         swiperSlide,
-        Slider
+        Slider,
+        SingerName
     },
     data () {
         return {
-            playlists: [],
+            mvs: [],
             tags: TAGS,
-            mark: 'recommend'
+            mark: 'mv'
         }
     },
     mounted() {
-        /* getHomePlaylistTag().then(res => {
-            this.tags = res.tags.slice(0, 5)
-            this.tags.unshift({name: '全部'})
-        }) */
-
-        this.getPlaylist('全部', 0)
+        this._getHomeMV('')
     },
     methods: {
-        getPlaylist(tag, mySwiper) {
-            getHomePlaylist(tag).then(res => {
-                this.playlists = spliceArray(res.playlists, 5)
+        _getHomeMV(tag, mySwiper) {
+            getHomeMV(tag).then(res => {
+                console.log(res);
+                this.mvs = spliceArray(res.data, 10)
 
                 mySwiper && mySwiper.slideTo(0, false)
             })
@@ -90,8 +89,8 @@ export default {
         formatCount(count) {
             return formatCount(count)
         },
-        changeTag(tag, mySwiper) { // 切换tag
-            this.getPlaylist(tag, mySwiper)
+        changeTag(tag, mySwiper) {
+            this._getHomeMV(tag, mySwiper)
         }
     }
 }

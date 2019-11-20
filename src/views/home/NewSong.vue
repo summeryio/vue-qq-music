@@ -9,7 +9,7 @@
                     <el-col class="item" :span="8" v-for="item in slide" :key="item.id">
                         <div class="wrapper">
                             <a href="/" class="pic mod_cover">
-                                <img v-lazy="item.album.blurPicUrl + '?param=150y150'" onerror="this.src='//y.gtimg.cn/mediastyle/global/img/playlist_300.png?max_age=31536000';this.onerror=null;" alt="">
+                                <img v-lazy="item.album.blurPicUrl + '?param=150y150'">
                                 <i class="mask mod_mask"></i>
                                 <i class="play mod_icon_play"></i>
                             </a>

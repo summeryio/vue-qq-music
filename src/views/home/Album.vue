@@ -8,7 +8,7 @@
                 <li v-for="album in albums" :key="album.id">
                     <div class="wrapper">
                         <a href="/" class="pic mod_cover">
-                            <img v-lazy="album.picUrl + '?param=300y300'" onerror="this.src='//y.gtimg.cn/mediastyle/global/img/playlist_300.png?max_age=31536000';this.onerror=null;" alt="谢谢你们，NICO Touches the Walls">
+                            <img v-lazy="album.picUrl + '?param=300y300'" >
                             <i class="mask mod_mask"></i>
                             <i class="play mod_icon_play"></i>
                         </a>

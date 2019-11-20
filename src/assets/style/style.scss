@@ -27,7 +27,7 @@
     }
     .types-title {
         position: relative;
-        padding: 4% 0 2%;
+        padding: 50px 0 2%;
         font-size: 24px;
         color: #93999F;
         letter-spacing: 0.6px;
@@ -110,7 +110,6 @@
     .swiper-container {
         margin-bottom: 20px;
     }
-    // 新歌首发
     .newsong-list {
         .item {}
         .wrapper {
@@ -175,6 +174,84 @@
             bottom: 0;
             line-height: 86px;
             @include c_light();
+        }
+    }
+    .banner-list {
+        .wrapper {
+            margin: 0 6px;
+        }
+        .pic {
+            position: relative;
+            display: block;
+            width: 100%;
+            padding-top: 40%;
+
+            img {
+                @include ab_full();
+                object-fit: cover;
+            }
+        }
+    }
+    .card-mv {
+        /* .pic {
+            padding-top: 56.5476%;
+        } */
+        .mv-list {
+            margin-right: -20px;
+            font-size: 0;
+            @include clearfix();
+            & > li {
+                overflow: hidden;
+                position: relative;
+                float: left;
+                width: 20%;
+                font-size: 14px;
+                padding-bottom: 25px;
+            }
+            .wrapper {
+                
+                margin-right: 20px;
+            }
+            .pic {
+                position: relative;
+                display: block;
+                overflow: hidden;
+                padding-top: 56%;
+                margin-bottom: 12px;
+        
+                &:hover {
+                    img {
+                        transform: scale(1.07) translateZ(0);
+                        transition: transform .75s cubic-bezier(0,1,.75,1);
+                    }
+                }
+                img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    
+                    transform: scale(1) translateZ(0);
+                    transition: transform .75s;
+                }
+            }
+            .intro {
+                .name {
+                    display: block;
+                    font-weight: 400;
+                    line-height: 22px;
+                    max-height: 44px;
+                    @include t_hide(100%);
+                }
+                .count {
+                    @include c_light();
+                }
+                .mod_singer_name {
+                    @include t_hide(100%);
+                }
+            }
         }
     }
 }

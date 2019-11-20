@@ -1,5 +1,5 @@
 <template>
-	<p class="singer" v-html="formatArtists" @click="handleClick($event)"></p>
+	<p class="mod_singer_name" v-html="formatArtists" @click="handleClick($event)"></p>
 </template>
 
 <script>
@@ -44,12 +44,13 @@ export default {
 <style lang="scss" scoped>
     .singer {
         color: #999;
-        a {
+        
+    }
+    .singer a {
             color: #999;
 
             &:hover {
                 color: #31c27c;
             }
         }
-    }
 </style>
