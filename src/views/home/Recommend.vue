@@ -53,16 +53,18 @@ export default {
         this.getPlaylist('全部', 0)
     },
     methods: {
-        getPlaylist(tag, index, swiper) {
+        getPlaylist(tag, index, mySwiper) {
             getHomePlaylist(tag).then(res => {
                 this.playlists = spliceArray(res.playlists, 5)
+
+                mySwiper && mySwiper.slideTo(0, false)
             })
         },
         formatCount(count) {
             return formatCount(count)
         },
-        changeTag(tag, index) { // 切换tag
-            this.getPlaylist(tag, index)
+        changeTag(tag, index, mySwiper) { // 切换tag
+            this.getPlaylist(tag, index, mySwiper)
         }
     }
 }

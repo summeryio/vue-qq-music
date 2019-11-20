@@ -5,7 +5,7 @@
                 <li 
                     v-for="(tag, i) in tags" 
                     :class="{active: i === curTag}" 
-                    @click="changeTag(tag.name, i)"
+                    @click="changeTag(tag.name, i, mySwiper)"
                     :key="i"
                 >{{tag.name}}</li>
             </ul>
@@ -75,14 +75,13 @@ export default {
         }
     },
     methods: {
-        changeTag(tag, index) {
+        changeTag(tag, index, mySwiper) {
             this.curTag = index
-            this.$emit('select', tag, index)
-            this.swiper.slideTo(0, false)
+            this.$emit('select', tag, index, mySwiper)
         }
     },
     computed: {
-        swiper() {
+        mySwiper() {
             return this.$refs.mySwiper.swiper
         }
     }
