@@ -3,7 +3,7 @@
         <h3 class="types-title">
             <span class="tit-icon icon-skill-l tit-icon-l"></span><em>新</em>／<em>歌</em>／<em>首</em>／<em>发</em><span class="tit-icon icon-skill-r tit-icon-r"></span>
         </h3>
-        <Slider :tags="tags"  :mark="mark">
+        <Slider :tags="tags" @select="changeTag"  :mark="mark">
             <swiperSlide v-for="(slide, i) in newsongs" :key="i">
                 <el-row class="newsong-list">
                     <el-col class="item" :span="8" v-for="item in slide" :key="item.id">
@@ -31,6 +31,29 @@ import {formatCount, spliceArray} from '@/assets/js/util'
 import SingerName from '@/components/SingerName'
 import Slider from './Slider'
 
+const TAGS = [
+    {
+        id: 0,
+        name: '全部'
+    },
+    {
+        id: 7,
+        name: '华语'
+    },
+    {
+        id: 96,
+        name: '欧美'
+    },
+    {
+        id: 8,
+        name: '日本'
+    },
+    {
+        id: 16,
+        name: '韩国'
+    }
+]
+
 export default {
     components: {
         swiper,
@@ -41,17 +64,24 @@ export default {
     data () {
         return {
             newsongs: [],
-            tags: [],
+            tags: TAGS,
             mark: 'newsong'
         }
     },
     mounted() {
-        getNewSong().then(res => {
-            // console.log(res.data.splice(0, 20));
-            this.newsongs = spliceArray(res.data.splice(0, 36), 9)
-        })
+        this._getNewSong(this.tags[0].id)
     },
     methods: {
+        _getNewSong(tag, mySwiper) {
+            getNewSong(tag).then(res => {
+                this.newsongs = spliceArray(res.data.splice(0, 36), 9)
+
+                mySwiper && mySwiper.slideTo(0, false)
+            })
+        },
+        changeTag(tag, mySwiper) {
+            this._getNewSong(tag, mySwiper)
+        }
     }
 }
 </script>

@@ -31,6 +31,33 @@ import {getHomePlaylist, getHomePlaylistTag} from '@/assets/js/api'
 import {spliceArray, formatCount} from '@/assets/js/util'
 import Slider from './Slider'
 
+const TAGS = [
+    {
+        id: '全部',
+        name: '全部'
+    },
+    {
+        id: '华语',
+        name: '华语'
+    },
+    {
+        id: '流行',
+        name: '流行'
+    },
+    {
+        id: '摇滚',
+        name: '摇滚'
+    },
+    {
+        id: '民谣',
+        name: '民谣'
+    },
+    {
+        id: '电子',
+        name: '电子'
+    }
+]
+
 export default {
     components: {
         swiper,
@@ -40,20 +67,20 @@ export default {
     data () {
         return {
             playlists: [],
-            tags: [],
+            tags: TAGS,
             mark: 'recommend'
         }
     },
     mounted() {
-        getHomePlaylistTag().then(res => {
+        /* getHomePlaylistTag().then(res => {
             this.tags = res.tags.slice(0, 5)
             this.tags.unshift({name: '全部'})
-        })
+        }) */
 
         this.getPlaylist('全部', 0)
     },
     methods: {
-        getPlaylist(tag, index, mySwiper) {
+        getPlaylist(tag, mySwiper) {
             getHomePlaylist(tag).then(res => {
                 this.playlists = spliceArray(res.playlists, 5)
 
@@ -63,8 +90,8 @@ export default {
         formatCount(count) {
             return formatCount(count)
         },
-        changeTag(tag, index, mySwiper) { // 切换tag
-            this.getPlaylist(tag, index, mySwiper)
+        changeTag(tag, mySwiper) { // 切换tag
+            this.getPlaylist(tag, mySwiper)
         }
     }
 }
