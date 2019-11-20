@@ -20,9 +20,9 @@ export default {
             } else {
                 this.artists.forEach((ar, i) => {
                     if (i === this.artists.length - 1) {
-                        res.push(`<router-link to="/">${ar.name}</router-link>`)
+                        res.push(`<a href="javascript: void(0);" data-id="${ar.id}">${ar.name}</a>`)
                     } else {
-                        res.push(`<router-link to="/">${ar.name}</router-link> / `)
+                        res.push(`<a href="javascript: void(0);" data-id="${ar.id}">${ar.name}</a> / `)
                     }
                 })
 
@@ -41,3 +41,15 @@ export default {
     }
 }
 </script>
+<style lang="scss" scoped>
+    .singer {
+        color: #999;
+        a {
+            color: #999;
+
+            &:hover {
+                color: #31c27c;
+            }
+        }
+    }
+</style>

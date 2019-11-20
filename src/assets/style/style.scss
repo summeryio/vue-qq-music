@@ -110,5 +110,71 @@
     .swiper-container {
         margin-bottom: 20px;
     }
-    
+    // 新歌首发
+    .newsong-list {
+        .item {}
+        .wrapper {
+            position: relative;
+            height: 86px;
+            overflow: hidden;
+            border-top: 1px solid #f2f2f2;
+            padding-top: 12px;
+            font-size: 14px;
+            box-sizing: content-box;
+            margin: -1px 30px 13px 0;
+        }
+        .pic {
+            position: relative;
+            float: left;
+            width: 86px;
+            height: 86px;
+            margin-right: 14px;
+            overflow: hidden;
+            &:hover {
+                img {
+                    transform: scale(1.07) translateZ(0);
+                    transition: transform .75s cubic-bezier(0,1,.75,1);
+                }
+            }
+
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                
+                transform: scale(1) translateZ(0);
+                transition: transform .75s;
+            }
+            .play {
+                background-size: 68%;
+                background-repeat: no-repeat;
+                background-position: 50%;
+            }
+        }
+        .name {
+            font-size: 14px;
+            padding: 21px 0 2px;
+            max-width: 50%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-weight: 400;
+        }
+        .singer {
+            max-width: 50%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .time {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            line-height: 86px;
+            @include c_light();
+        }
+    }
 }

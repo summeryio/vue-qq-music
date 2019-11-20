@@ -1,26 +1,24 @@
 <template>
     <div class="card card-recommend mod_slider_box">
         <div class="section-inner">
-            <div class="card card-recommend mod_slider_box">
-                <h3 class="types-title">
-                    <span class="tit-icon icon-skill-l tit-icon-l"></span><em>新</em>／<em>碟</em>／<em>首</em>／<em>发</em><span class="tit-icon icon-skill-r tit-icon-r"></span>
-                </h3>
-                <ul class="mod_playlist_box">
-                    <li v-for="album in albums" :key="album.id">
-                        <div class="wrapper">
-                            <a href="/" class="pic mod_cover">
-                                <img v-lazy="album.picUrl + '?param=300y300'" onerror="this.src='//y.gtimg.cn/mediastyle/global/img/playlist_300.png?max_age=31536000';this.onerror=null;" alt="谢谢你们，NICO Touches the Walls">
-                                <i class="mask mod_mask"></i>
-                                <i class="play mod_icon_play"></i>
-                            </a>
-                            <div class="intro">
-                                <a href="/" class="name">{{album.name}}</a>
-                                <SingerName :artists="album.artists"></SingerName>
-                            </div>
+            <h3 class="types-title">
+                <span class="tit-icon icon-skill-l tit-icon-l"></span><em>新</em>／<em>碟</em>／<em>首</em>／<em>发</em><span class="tit-icon icon-skill-r tit-icon-r"></span>
+            </h3>
+            <ul class="mod_playlist_box">
+                <li v-for="album in albums" :key="album.id">
+                    <div class="wrapper">
+                        <a href="/" class="pic mod_cover">
+                            <img v-lazy="album.picUrl + '?param=300y300'" onerror="this.src='//y.gtimg.cn/mediastyle/global/img/playlist_300.png?max_age=31536000';this.onerror=null;" alt="谢谢你们，NICO Touches the Walls">
+                            <i class="mask mod_mask"></i>
+                            <i class="play mod_icon_play"></i>
+                        </a>
+                        <div class="intro">
+                            <a href="/" class="name">{{album.name}}</a>
+                            <SingerName :artists="album.artists"></SingerName>
                         </div>
-                    </li>
-                </ul>
-            </div>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </template>
