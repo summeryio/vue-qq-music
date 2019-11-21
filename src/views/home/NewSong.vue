@@ -1,7 +1,7 @@
 <template>
     <div class="card card-newsong mod_slider_box">
         <h3 class="types-title">
-            <span class="tit-icon icon-skill-l tit-icon-l"></span><em>新</em>／<em>歌</em>／<em>首</em>／<em>发</em><span class="tit-icon icon-skill-r tit-icon-r"></span>
+            <span class="tit-icon icon-new-l tit-icon-l"></span><em>新</em>／<em>歌</em>／<em>首</em>／<em>发</em><span class="tit-icon icon-new-r tit-icon-r"></span>
         </h3>
         <Slider :tags="tags" @select="changeTag"  :mark="mark">
             <swiperSlide v-for="(slide, i) in newsongs" :key="i">

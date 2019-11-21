@@ -14,7 +14,7 @@ import Playlist from './Playlist'
 import Album from './Album'
 import NewSong from './NewSong'
 import Banner from './Banner'
-import MV from './MV'
+// import MV from './MV'
 
 export default {
     components: {
@@ -22,7 +22,7 @@ export default {
         Album,
         NewSong,
         Banner,
-        MV
+        MV: resolve => require(['./MV'], resolve) // 组件懒加载
     },
     data () {
         return {

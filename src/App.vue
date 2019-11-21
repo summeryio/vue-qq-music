@@ -1,7 +1,10 @@
 <template>
 	<div id="app">
 		<MHeader></MHeader>
-		<router-view />
+		<keep-alive>
+			<router-view />
+		</keep-alive>
+		
 	</div>
 </template>
 

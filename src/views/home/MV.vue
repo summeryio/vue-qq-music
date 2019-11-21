@@ -1,7 +1,7 @@
 <template>
     <div class="card card-mv mod_slider_box">
         <h3 class="types-title">
-            <span class="tit-icon icon-star-l tit-icon-l"></span><em>最</em>／<em>新</em>／<em>M</em>／<em>V</em><span class="tit-icon icon-star-r tit-icon-r"></span>
+            <span class="tit-icon icon-shizhan-l tit-icon-l"></span><em>最</em>／<em>新</em>／<em>M</em>／<em>V</em><span class="tit-icon icon-shizhan-r tit-icon-r"></span>
         </h3>
         <Slider :tags="tags" @select="changeTag" :mark="mark">
             <swiperSlide v-for="(slide, i) in mvs" :key="i">
@@ -9,7 +9,7 @@
                     <li v-for="item in slide" :key="item.id">
                         <div class="wrapper">
                             <a href="/" class="pic mod_cover">
-                                <img v-lazy="item.cover + '?param=300y300'">
+                                <img v-lazy="item.cover + '?param=640y360'">
                                 <i class="mask mod_mask"></i>
                                 <i class="play mod_icon_play"></i>
                             </a>
